@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -15,6 +17,7 @@ html {
  */
 
 body {
+  font-family: "Roboto Condensed";
   margin: 0;
   color: #244751;
   background-color: #eee;
