@@ -28,6 +28,7 @@ body {
  */
 
 main {
+  padding: 15px;
   width: 450px;
   display: block;
   margin-left: auto;

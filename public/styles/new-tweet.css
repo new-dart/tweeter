@@ -1,0 +1,26 @@
+.new-tweet {
+  background-color: #eee;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: slategrey;
+}
+
+.compose-form-title {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+textarea {
+  padding-top: 5px;
+  padding-left: 5px;
+  width: 100%;
+}
+
+.counter {
+  line-height: 2em;
+  float: right;
+}

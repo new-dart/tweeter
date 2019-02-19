@@ -11,6 +11,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
@@ -28,39 +29,14 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-      <p>
-        Lorem Simpson perfectly cromulent uncle ant lamarella a law requiring ducks to wear long pants microcalifragilistics bumbled-bee
-        money fight lamarella fancy store-bought dirt hot jazz music joy, excitement, looking shark boy tromboner delicious caulk gamblor
-        delicious caulk eyeball stew spiritual de-pantsing bagzooka knowledgeum flanswered annual gift man t.g.i. mcscratchy's knifey
-        spooney riding the midnight train to slab city please let me explain horse with a head of a rabbit and the body of a rabbit killbot
-        factory cromulent the congealed group tomorry fishmas uppity box liberty log tubby municipal house of pancakes snacktacular suck
-        like a fox sacrilicious bovine university senseless dunderpate dollareydoos nuisancefon highway 9 bird sanctuary velocitator
-        microcalifragilistics add more balls bagzooka don'ter well-wisher joy, excitement, looking faxtrola delicious caulk unpossible mono
-        = one onetuplet paradigm fishmas don'ter foodrinkery paraplegiarino telepanhandling have been either drunk or on cocaine velocitator
-      </p>
-
-      <p>
-        capdabbler nervous pervis no ones pinching his legs unpossible uppity box undefinedskanks for nothing posturologists poochie hate
-        mail (foreign) throughhole foodrinkery pretzeled bread suck like a fox proactive nucleon fudrucker low-income nobodies be-musement
-        park annual gift man forfty no-breath unfaceuptoable death sports learnatorium well, you all know what laughter sounds like. shiva
-        h. vishnu t.g.i. mcscratchy's eat my shorts learnatorium lord protect this rocket house homersexual ketchup smell ya later
-        telepanhandling knowitallism oodily gangsta city fudrucker texas penny the congealed group they tried that in the movies and it
-        didn't work well-wisher suspicious aloysius sacrilicious pretzeled bread four krustys texas left bolognium the old wiggum charm crap
-        factory uncle ant garbagewater unnecessary surgery land needs more dog california cheeseburger squozen velocitator the whipped group
-        swedish lunchbox science pole menapplause pricetaggery iced cream highway 9 bird sanctuary smokesperson
-      </p>
-
-      <p>
-        eedily world-class chemical dependency center telepanhandling bovine university unpossible smuggled vegetables you are hearing me
-        talk foodrinkery lord protect this rocket house wow, this is so much like my dreams it's scary embiggen tubby chazwazers word hole
-        beginualize scratchtasia your homemade liquor is exploding again. suck shack hey-dilly-ho dollareydoos fireworks factory yoink
-        science pole no-breath meh such a violent motif zuh smell ya later there's no need to murmur disgruntled goat lisa, go to your room
-        america junior snacktacular be-musement park the cause of and solution to all of life's problems. please, kill me. annual gift man
-        dollareydoos speedholes crayola oblongata glavin saxamaphone swishifying mysterious liquor clouds have been either drunk or on
-        cocaine lard-ho california cheeseburger tomorry blubber-in-law the old wiggum charm garbagewater catsup totally outrageous paradigm
-        garbagewater eat my shorts commie-nazis embiggen nincompoop skittlebrau dungeonarium doobob woozle wuzzle bachelor arms blingwad
-        bovine university
-      </p>
+      <section class="new-tweet">
+        <h2 class="compose-form-title">Compose Tweet</h2>
+        <form class="tweet-form" action="/tweets" method="POST">
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <input type="submit" value="Tweet" />
+          <span class="counter">140</span>
+        </form>
+      </section>
     </main>
   </body>
 </html>
