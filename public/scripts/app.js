@@ -54,70 +54,77 @@ $(document).ready(function() {
     }
   ];
 
+  // build a singular Tweet box
   function createTweetElement(data) {
+    // start of the window
     let $article = $("<article>").addClass("tweet-window");
+    //window header with Avatar, username and ID
+    //sticks itself to the bottom of the window first
     let $header = $("<header>").addClass("userName");
     $article.append($header);
-    let $userAv = $("<img>").addClass("userAv");
+    let $userAv = $("<img>")
+      .addClass("userAv")
+      .attr("src", data.user.avatars.small);
     $header.append($userAv);
-    let $userName = $("<span>").addClass("name");
+    let $userName = $("<span>")
+      .addClass("name")
+      .text(data.user.name);
     $header.append($userName);
-    let $userId = $("<p>").addClass("userID");
+    let $userId = $("<p>")
+      .addClass("userID")
+      .text(data.user.handle);
     $header.append($userId);
-    let $tweetQuote = $("<span>").addClass("tweetQuote");
+    // Tweet text
+    let $tweetQuote = $("<span>")
+      .addClass("tweetQuote")
+      .text(data.content.text);
     $article.append($tweetQuote);
+    // window footer with Time Posted and option icons
     let $footer = $("<footer>").addClass("footer");
     $article.append($footer);
-    let $img1 = $("<img>").addClass("icon");
+    let $img1 = $("<img>")
+      .addClass("icon")
+      .attr("src", "/images/flag.png");
     $footer.append($img1);
-    let $img2 = $("<img>").addClass("icon");
+    let $img2 = $("<img>")
+      .addClass("icon")
+      .attr("src", "/images/heart.png");
     $footer.append($img2);
-    let $img3 = $("<img>").addClass("icon");
+    let $img3 = $("<img>")
+      .addClass("icon")
+      .attr("src", "/images/refresh.png");
     $footer.append($img3);
     let $date = $("<span>").addClass("postDate");
     $footer.append($date);
 
-    $userName.text(data.user.name);
-    $userAv.attr("src", data.user.avatars.small);
-    $userId.text(data.user.handle);
-    $tweetQuote.text(data.content.text);
-    $img1.attr("src", "/images/flag.png");
-    $img2.attr("src", "/images/heart.png");
-    $img3.attr("src", "/images/refresh.png");
     let d = new Date(data.created_at);
     $date.text(d.toDateString(data.created_at));
     return $article;
   }
 
+  //loops through database, builds tweetboxes for each tweet in db
+  // displays the tweets on the page
   function renderTweets(tweets) {
     // loops through tweets
     for (var i = 0; i < tweets.length; i++) {
       var tweetQuote = createTweetElement(data[i]);
       $(".tweet-container").prepend(tweetQuote);
     }
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
   }
-
-  // <section class="tweet-container">
-  //       <article class="tweet-window">
-  //         <header class="userName">
-  //           <img class="userAv" src="/images/avatar-placeholder.png" />
-  //           <span class="name">Bill Fields</span>
-  //           <p class="userID">@MrFields</p>
-  //         </header>
-  //         <span class="tweetSpot">This is where my tweet goes!</span>
-  //         <footer class="postDate">
-  //           post x minutes ago
-  //           <span class="iconGroup">
-  //             <img class="icon" src="/images/flag.png"/>
-  //             <img class="icon" src="/images/refresh.png"/>
-  //             <img class="icon" src="/images/heart.png"
-  //           /></span>
-
-  // Test / driver code (temporary)
-  // console.log($tweet); // to see what it looks like
-  // $("#tweets-container").append($tweet);
-  // to add it to the page so we can make sure it's got all the right elements, classes, etc.
   renderTweets(data);
+
+  $(".tweet-form").on("submit", event => {
+    event.preventDefault();
+
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: $(".tweet-form").serialize(),
+      success: function(tweets) {},
+      error: function() {
+        console.log("Post request failed");
+        alert("Post Request Failed");
+      }
+    });
+  });
 });
