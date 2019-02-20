@@ -76,8 +76,9 @@ $(document).ready(function() {
         url: "/tweets",
         data: $(".tweet-form").serialize(),
         success: function(tweets) {
-          createTweetElement(tweets);
+          $(".tweet-window").empty();
           $(".new-tweet").val("");
+          loadTweets();
         },
         error: function() {
           console.log("Post request failed");
