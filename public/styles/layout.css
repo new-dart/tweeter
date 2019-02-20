@@ -89,10 +89,10 @@ main {
   height: 15px;
   width: 15px;
   float: right;
-  opacity: 0.3;
+  opacity: 0;
 }
 
-.tweet-container:hover .iconGroup {
+.tweet-container:hover .icon {
   opacity: 1;
 }
 
