@@ -18,7 +18,7 @@ $(document).ready(function() {
         handle: "@SirIsaac"
       },
       content: {
-        text: "If I have seen further it is by standing on the shoulders of giants"
+        text: "If I have seen further it is by standing on the shoulders of giants really really really really reallu really long"
       },
       created_at: 1461116232227
     },

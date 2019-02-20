@@ -33,7 +33,7 @@ main {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: white;
+  background-color: #f1f1f1;
   padding-top: 140px;
 }
 
@@ -49,6 +49,7 @@ main {
   background-color: #d3d3d3;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  padding-right: 5px;
 }
 
 .tweet-container {
@@ -59,14 +60,27 @@ main {
   opacity: 0.75;
 }
 
-.tweet-container .tweetSpot {
-  line-height: 3em;
+.tweet-container .tweetQuote {
+  padding-top: 15px;
+  float: left;
   padding-left: 12px;
+  padding-bottom: 12px;
+  background: white;
+  width: 100%;
 }
 
 .userID {
   float: right;
   padding-right: 5px;
+}
+
+.tweet-window {
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 10px;
+  opacity: 0.7;
 }
 
 .name {
@@ -76,13 +90,16 @@ main {
   padding-left: 10px;
 }
 
-.postDate {
+.footer {
   padding-top: 5px;
   padding-bottom: 5px;
   border-top: solid;
   border-top-width: 1px;
   font-size: 0.85em;
   padding-left: 5px;
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .tweet-container .icon {
@@ -90,12 +107,13 @@ main {
   width: 15px;
   float: right;
   opacity: 0;
+  margin-right: 5px;
 }
 
-.tweet-container:hover .icon {
+.tweet-window:hover .icon {
   opacity: 1;
 }
 
-.tweet-container:hover {
+.tweet-window:hover {
   opacity: 1;
 }
