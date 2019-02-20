@@ -36,3 +36,51 @@ main {
   background-color: white;
   padding-top: 140px;
 }
+
+.tweet-container .userAv {
+  width: 50px;
+  float: left;
+  padding-top: 12px;
+  padding-left: 5px;
+}
+
+.tweet-container .userName {
+  height: 70px;
+  background-color: #d3d3d3;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tweet-container {
+  border-style: solid;
+  border-color: #eee;
+  border-radius: 8px;
+  border-width: thin;
+  opacity: 0.75;
+}
+
+.tweet-container .tweetSpot {
+  line-height: 3em;
+  padding-left: 12px;
+}
+
+.userID {
+  float: right;
+  padding-right: 5px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1.5em;
+  line-height: 2em;
+  padding-left: 10px;
+}
+
+.postDate {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: solid;
+  border-top-width: 1px;
+  font-size: 0.85em;
+  padding-left: 5px;
+}
