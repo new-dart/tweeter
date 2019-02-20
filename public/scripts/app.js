@@ -6,11 +6,13 @@
 
 $(document).ready(function() {
   const tweetbox = $(".tweet-container");
-  console.log(tweetbox);
+  const iconGroup = $(".iconGroup");
   tweetbox.on("mouseover", function(event) {
     $(".tweet-container").css("opacity", "1");
+    $(".iconGroup").css("opacity", "1");
   });
   tweetbox.on("mouseout", function(event) {
     $(".tweet-container").css("opacity", ".75");
+    $(".iconGroup").css("opacity", "0");
   });
 });
