@@ -5,55 +5,6 @@
  */
 
 $(document).ready(function() {
-  // Test / driver code (temporary). Eventually will get this from the server.
-  const data = [
-    {
-      user: {
-        name: "Newton",
-        avatars: {
-          small: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          regular: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          large: "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        handle: "@SirIsaac"
-      },
-      content: {
-        text: "If I have seen further it is by standing on the shoulders of giants really really really really reallu really long"
-      },
-      created_at: 1461116232227
-    },
-    {
-      user: {
-        name: "Descartes",
-        avatars: {
-          small: "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          regular: "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          large: "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        handle: "@rd"
-      },
-      content: {
-        text: "Je pense , donc je suis"
-      },
-      created_at: 1461113959088
-    },
-    {
-      user: {
-        name: "Johann von Goethe",
-        avatars: {
-          small: "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          regular: "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          large: "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        handle: "@johann49"
-      },
-      content: {
-        text: "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      created_at: 1461113796368
-    }
-  ];
-
   // build a singular Tweet box
   function createTweetElement(data) {
     // start of the window
@@ -107,24 +58,39 @@ $(document).ready(function() {
   function renderTweets(tweets) {
     // loops through tweets
     for (var i = 0; i < tweets.length; i++) {
-      var tweetQuote = createTweetElement(data[i]);
+      var tweetQuote = createTweetElement(tweets[i]);
       $(".tweet-container").prepend(tweetQuote);
     }
   }
-  renderTweets(data);
 
   $(".tweet-form").on("submit", event => {
     event.preventDefault();
 
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: $(".tweet-form").serialize(),
-      success: function(tweets) {},
-      error: function() {
-        console.log("Post request failed");
-        alert("Post Request Failed");
-      }
-    });
+    if ($(".new-tweet").val() === "") {
+      alert("Please write a tweet!");
+    } else if ($(".new-tweet").val().length > 140) {
+      alert("Too many characters!");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: $(".tweet-form").serialize(),
+        success: function(tweets) {
+          createTweetElement(tweets);
+          $(".new-tweet").val("");
+        },
+        error: function() {
+          console.log("Post request failed");
+          alert("Post Request Failed");
+        }
+      });
+    }
   });
+
+  function loadTweets() {
+    $.getJSON("/tweets", (data, status, xhr) => {
+      renderTweets(data);
+    });
+  }
+  loadTweets();
 });
