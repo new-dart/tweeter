@@ -67,9 +67,9 @@ $(document).ready(function() {
     event.preventDefault();
 
     if ($(".new-tweet").val() === "") {
-      alert("Please write a tweet!");
+      $(".errorMessage").text("Please write a tweet!");
     } else if ($(".new-tweet").val().length > 140) {
-      alert("Too many characters!");
+      $(".errorMessage").text("Too many characters!");
     } else {
       $.ajax({
         type: "POST",
@@ -77,7 +77,9 @@ $(document).ready(function() {
         data: $(".tweet-form").serialize(),
         success: function(tweets) {
           $(".tweet-window").empty();
+          $(".errorMessage").text("");
           $(".new-tweet").val("");
+          $(".counter").text("140");
           loadTweets();
         },
         error: function() {
@@ -94,4 +96,9 @@ $(document).ready(function() {
     });
   }
   loadTweets();
+
+  $(".composeButton").click(function() {
+    $(".composeForm").toggle("slow");
+    $(".new-tweet").focus();
+  });
 });

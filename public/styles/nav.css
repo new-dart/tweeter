@@ -21,3 +21,20 @@ nav {
   font-size: 2em;
   line-height: 2.5em;
 }
+
+#nav-bar .composeButton {
+  border-radius: 12px;
+  background-color: mediumseagreen;
+  float: right;
+  margin: 15px;
+  height: 50px;
+  transition: background-color 0.3s ease;
+}
+
+#nav-bar .composeButton:hover {
+  border-radius: 12px;
+  background-color: mintcream;
+  float: right;
+  margin: 15px;
+  height: 50px;
+}

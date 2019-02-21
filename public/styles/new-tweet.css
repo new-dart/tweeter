@@ -1,3 +1,7 @@
+.composeForm {
+  display: none;
+}
+
 .new-tweet {
   background-color: #eee;
   border-radius: 8px;
