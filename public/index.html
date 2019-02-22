@@ -22,25 +22,31 @@
   </head>
 
   <body>
-    <!-- Top nav bar (fixed) -->
+    <!-- Top nav bar (fixed) to window-->
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" />
       <span class="header">Tweeter</span>
+      <!-- Compose a New Tweet Button -->
       <input class="composeButton" action="/" method="GET" type="submit" value="Compose" />
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <!-- Compose a New Tweet Form -->
       <section class="composeForm">
         <h2 class="compose-form-title">Compose Tweet</h2>
         <form class="tweet-form" action="/tweets" method="POST">
           <textarea class="new-tweet" name="text" placeholder="What's the buzz? Tell me what's a-happenin'."></textarea>
+          <!--Submit button-->
           <input type="submit" value="Tweet" />
+          <!--If (textarea > 140 characters) or nothing in the textarea, error will reveal below-->
           <span class="errorMessage"></span>
+          <!-- Character Counter -->
           <span class="counter">140</span>
         </form>
       </section>
       <br />
+      <!-- all the tweets will be displayed here -->
       <section class="tweet-container"></section>
     </main>
   </body>

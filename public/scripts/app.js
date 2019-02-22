@@ -1,38 +1,41 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 $(document).ready(function() {
   // build a singular Tweet box
   function createTweetElement(data) {
-    // start of the window
+    // initializes a new Tweet window
+    // attaches an <article> tag to the top of the window
     let $article = $("<article>").addClass("tweet-window");
-    //window header with Avatar, username and ID
-    //sticks itself to the bottom of the window first
+
+    // Builds a header, attached to article
     let $header = $("<header>").addClass("userName");
     $article.append($header);
+    // user avatar, attached to Header
     let $userAv = $("<img>")
       .addClass("userAv")
       .attr("src", data.user.avatars.small);
+    // user's Real Name, attached to Header
     $header.append($userAv);
     let $userName = $("<span>")
       .addClass("name")
       .text(data.user.name);
     $header.append($userName);
+    // user's ID/handle, attached to Header
     let $userId = $("<p>")
       .addClass("userID")
       .text(data.user.handle);
     $header.append($userId);
+
     // Tweet text
+    // attaches to the Article, under the Header
     let $tweetQuote = $("<span>")
       .addClass("tweetQuote")
       .text(data.content.text);
     $article.append($tweetQuote);
-    // window footer with Time Posted and option icons
+
+    // window footer with Time Posted and option pictures
+    // attaches to the Article, under the Tweet Text
     let $footer = $("<footer>").addClass("footer");
     $article.append($footer);
+    // option pictures
     let $img1 = $("<img>")
       .addClass("icon")
       .attr("src", "/images/flag.png");
@@ -47,13 +50,13 @@ $(document).ready(function() {
     $footer.append($img3);
     let $date = $("<span>").addClass("postDate");
     $footer.append($date);
-
+    // date the tweet was posted
     let d = new Date(data.created_at);
     $date.text(d.toDateString(data.created_at));
     return $article;
   }
 
-  //loops through database, builds tweetboxes for each tweet in db
+  // loops through database, builds tweetboxes for each tweet in db
   // displays the tweets on the page
   function renderTweets(tweets) {
     // loops through tweets
@@ -63,9 +66,11 @@ $(document).ready(function() {
     }
   }
 
+  // prevents Submit button from refreshing the page
   $(".tweet-form").on("submit", event => {
     event.preventDefault();
 
+    // possible error gatekeeping
     if ($(".new-tweet").val() === "") {
       $(".errorMessage").text("Please write a tweet!");
     } else if ($(".new-tweet").val().length > 140) {
@@ -76,10 +81,15 @@ $(document).ready(function() {
         url: "/tweets",
         data: $(".tweet-form").serialize(),
         success: function(tweets) {
+          // upon success, removes the list of tweets on the page
           $(".tweet-window").empty();
+          // upon success, if error message exists, removes it
           $(".errorMessage").text("");
+          // upon success, textarea in New Tweet box resets to Empty
           $(".new-tweet").val("");
+          // upon success, character count resets to 140
           $(".counter").text("140");
+          // puts all the tweets back on the page, including the new one
           loadTweets();
         },
         error: function() {
@@ -90,13 +100,16 @@ $(document).ready(function() {
     }
   });
 
+  // gets the tweets from the database and renders them to the page
   function loadTweets() {
     $.getJSON("/tweets", (data, status, xhr) => {
       renderTweets(data);
     });
   }
+  // loads the tweets upon intial load of webpage
   loadTweets();
 
+  // Compose Tweet button toggles the form when clicked, and sends focus to textarea if form is on
   $(".composeButton").click(function() {
     $(".composeForm").toggle("slow");
     $(".new-tweet").focus();
