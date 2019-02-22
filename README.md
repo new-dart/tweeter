@@ -6,6 +6,15 @@ This repository is the completed code for a project: Students have forked and cl
 
 This completed product could not have been done without the help of the Lighthouse Lab Mentors and the other students in the cohort.
 
+## Dependencies
+
+- Express
+- Node 5.10.x or above
+- Body-Parser
+- Chance
+- MD5
+- MongoDB
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
@@ -21,12 +30,3 @@ This completed product could not have been done without the help of the Lighthou
 6. The Form's submission is conditional. If the form is empty or exceeds 140 characters, an error will prevent it from being added to the Database.
    ![Tweet Form Error Message: If the form is empty, submission will be denied and an error message will reveal itself."](https://github.com/new-dart/tweeter/blob/master/docs/Empty%20Tweet%20Error%20Message.png?raw=true)
    ![Tweet Form Error Message: If the length of the tweet exceeds 140 characters, submission will be denied and an error message will reveal itself."](https://github.com/new-dart/tweeter/blob/master/docs/Too%20Many%20Characters%20Error%20Message.png)
-
-## Dependencies
-
-- Express
-- Node 5.10.x or above
-- Body-Parser
-- Chance
-- MD5
-- MongoDB
